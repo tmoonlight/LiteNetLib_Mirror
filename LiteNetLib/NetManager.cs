@@ -440,7 +440,7 @@ namespace LiteNetLib
                     var netPeer = _peers[i];
                     if (netPeer.ConnectionState == ConnectionState.Connected && netPeer.TimeSinceLastPacket > DisconnectTimeout)
                     {
-                        netPeer.DebugWrite("[NM] Disconnect by timeout: {0} > {1}", netPeer.TimeSinceLastPacket, DisconnectTimeout);
+                        NetUtils.DebugWrite("[NM] Disconnect by timeout: {0} > {1}", netPeer.TimeSinceLastPacket, DisconnectTimeout);
                         var netEvent = CreateEvent(NetEventType.Disconnect);
                         netEvent.Peer = netPeer;
                         netEvent.DisconnectReason = DisconnectReason.Timeout;
@@ -857,6 +857,20 @@ namespace LiteNetLib
             var packet = _netPacketPool.GetWithData(PacketProperty.DiscoveryResponse, data, start, length);
             bool result = SendRawAndRecycle(packet, remoteEndPoint);
             return result;
+        }
+
+        /// <summary>
+        /// Flush all queued packets of all peers
+        /// </summary>
+        public void Flush()
+        {
+            lock (_peers)
+            {
+                for (int i = 0; i < _peers.Count; i++)
+                {
+                    _peers[i].Flush();
+                }
+            }
         }
 
         /// <summary>

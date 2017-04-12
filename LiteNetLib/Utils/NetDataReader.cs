@@ -77,6 +77,7 @@ namespace LiteNetLib.Utils
             SetSource(source, offset, maxSize);
         }
 
+        #region GetMethods
         public NetEndPoint GetNetEndPoint()
         {
             string host = GetString(1000);
@@ -300,7 +301,20 @@ namespace LiteNetLib.Utils
             return result;
         }
 
-        public byte[] GetBytes()
+        public string GetString()
+        {
+            int bytesCount = GetInt();
+            if (bytesCount <= 0)
+            {
+                return string.Empty;
+            }
+
+            string result = Encoding.UTF8.GetString(_data, _position, bytesCount);
+            _position += bytesCount;
+            return result;
+        }
+
+        public byte[] GetRemainingBytes()
         {
             byte[] outgoingData = new byte[AvailableBytes];
             Buffer.BlockCopy(_data, _position, outgoingData, 0, AvailableBytes);
@@ -308,7 +322,7 @@ namespace LiteNetLib.Utils
             return outgoingData;
         }
 
-        public void GetBytes(byte[] destination)
+        public void GetRemainingBytes(byte[] destination)
         {
             Buffer.BlockCopy(_data, _position, destination, 0, AvailableBytes);
             _position = _data.Length;
@@ -319,6 +333,104 @@ namespace LiteNetLib.Utils
             Buffer.BlockCopy(_data, _position, destination, 0, lenght);
             _position += lenght;
         }
+
+        public byte[] GetBytesWithLength()
+        {
+            int length = GetInt();
+            byte[] outgoingData = new byte[length];
+            Buffer.BlockCopy(_data, _position, outgoingData, 0, length);
+            _position += length;
+            return outgoingData;
+        }
+        #endregion
+
+        #region PeekMethods
+
+        public byte PeekByte()
+        {
+            return _data[_position];
+        }
+
+        public sbyte PeekSByte()
+        {
+            return (sbyte)_data[_position];
+        }
+
+        public bool PeekBool()
+        {
+            return _data[_position] > 0;
+        }
+
+        public ushort PeekUShort()
+        {
+            return BitConverter.ToUInt16(_data, _position);
+        }
+
+        public short PeekShort()
+        {
+            return BitConverter.ToInt16(_data, _position);
+        }
+
+        public long PeekLong()
+        {
+            return BitConverter.ToInt64(_data, _position);
+        }
+
+        public ulong PeekULong()
+        {
+            return BitConverter.ToUInt64(_data, _position);
+        }
+
+        public int PeekInt()
+        {
+            return BitConverter.ToInt32(_data, _position);
+        }
+
+        public uint PeekUInt()
+        {
+            return BitConverter.ToUInt32(_data, _position);
+        }
+
+        public float PeekFloat()
+        {
+            return BitConverter.ToSingle(_data, _position);
+        }
+
+        public double PeekDouble()
+        {
+            return BitConverter.ToDouble(_data, _position);
+        }
+
+        public string PeekString(int maxLength)
+        {
+            int bytesCount = BitConverter.ToInt32(_data, _position);
+            if (bytesCount <= 0 || bytesCount > maxLength * 2)
+            {
+                return string.Empty;
+            }
+
+            int charCount = Encoding.UTF8.GetCharCount(_data, _position + 4, bytesCount);
+            if (charCount > maxLength)
+            {
+                return string.Empty;
+            }
+
+            string result = Encoding.UTF8.GetString(_data, _position + 4, bytesCount);
+            return result;
+        }
+
+        public string PeekString()
+        {
+            int bytesCount = BitConverter.ToInt32(_data, _position);
+            if (bytesCount <= 0)
+            {
+                return string.Empty;
+            }
+
+            string result = Encoding.UTF8.GetString(_data, _position + 4, bytesCount);
+            return result;
+        }
+        #endregion
 
         public void Clear()
         {
