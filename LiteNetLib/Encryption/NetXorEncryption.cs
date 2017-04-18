@@ -8,7 +8,7 @@ namespace LiteNetLib.Encryption
         private byte[] _byteKey;
 
         /// <summary>
-        ///     NetXorEncryption constructor
+        /// NetXorEncryption constructor
         /// </summary>
         public NetXorEncryption(byte[] key)
         {
@@ -16,7 +16,7 @@ namespace LiteNetLib.Encryption
         }
 
         /// <summary>
-        ///     NetXorEncryption constructor
+        /// NetXorEncryption constructor
         /// </summary>
         public NetXorEncryption(string key)
         {
@@ -24,7 +24,7 @@ namespace LiteNetLib.Encryption
         }
 
         /// <summary>
-        ///     Decrypt an incoming message
+        /// Decrypt an incoming message
         /// </summary>
         public override bool Decrypt(byte[] rawData, int start, ref int length)
         {
@@ -38,7 +38,7 @@ namespace LiteNetLib.Encryption
         }
 
         /// <summary>
-        ///     Encrypt an outgoing message
+        /// Encrypt an outgoing message
         /// </summary>
         public override bool Encrypt(byte[] rawData, ref int start, ref int length)
         {

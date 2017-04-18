@@ -3,7 +3,7 @@
 namespace LiteNetLib.Encryption
 {
     /// <summary>
-    ///     Base for a non-threadsafe encryption class
+    /// Base for a non-threadsafe encryption class
     /// </summary>
     public abstract class NetBlockEncryptionBase : NetEncryption
     {
@@ -11,17 +11,18 @@ namespace LiteNetLib.Encryption
         private readonly byte[] _tmp;
 
         /// <summary>
-        ///     NetBlockEncryptionBase constructor
+        /// NetBlockEncryptionBase constructor
         /// </summary>
-        public NetBlockEncryptionBase()
+        protected NetBlockEncryptionBase(int blockSize)
         {
-            _tmp = new byte[BlockSize];
+            BlockSize = blockSize;
+            _tmp = new byte[blockSize];
         }
 
         /// <summary>
-        ///     Block size in bytes for this cipher
+        /// Block size in bytes for this cipher
         /// </summary>
-        public abstract int BlockSize { get; }
+        public int BlockSize { get; private set; }
 
         /// <summary>
         ///     Decrypt an incoming message encrypted with corresponding Encrypt
@@ -47,9 +48,9 @@ namespace LiteNetLib.Encryption
         }
 
         /// <summary>
-        ///     Encrypt am outgoing message with this algorithm.
-        ///     No writing can be done to the message after encryption, or message
-        ///     will be corrupted
+        /// Encrypt an outgoing message with this algorithm.
+        /// No writing can be done to the message after encryption, or message
+        /// will be corrupted
         /// </summary>
         public override bool Encrypt(byte[] rawData, ref int start, ref int length)
         {
@@ -74,12 +75,12 @@ namespace LiteNetLib.Encryption
         }
 
         /// <summary>
-        ///     Decrypt a block of bytes
+        /// Decrypt a block of bytes
         /// </summary>
         protected abstract void DecryptBlock(byte[] source, int sourceOffset, byte[] destination);
 
         /// <summary>
-        ///     Encrypt a block of bytes
+        /// Encrypt a block of bytes
         /// </summary>
         protected abstract void EncryptBlock(byte[] source, int sourceOffset, byte[] destination);
     }

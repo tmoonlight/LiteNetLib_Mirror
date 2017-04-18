@@ -103,7 +103,7 @@ namespace LibSample
             _serverListener = new ServerListener();
             NetEncryption encryption = new NetXorEncryption("te123we");
 
-            NetManager server = new NetManager(_serverListener, 2, "encription");
+            NetManager server = new NetManager(_serverListener, 2, "encryption");
             server.EnableEncryption(encryption);
             
             if (!server.Start(9050))
@@ -117,7 +117,7 @@ namespace LibSample
             //Client
             _clientListener = new ClientListener();
 
-            NetManager client = new NetManager(_clientListener, "encription");
+            NetManager client = new NetManager(_clientListener, "encryption");
             client.EnableEncryption(encryption);
             
             //client1.SimulateLatency = true;

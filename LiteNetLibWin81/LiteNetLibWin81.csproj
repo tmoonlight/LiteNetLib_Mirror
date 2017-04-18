@@ -52,6 +52,9 @@
     <Compile Include="..\LiteNetLib\Encryption\NetEncryption.cs">
       <Link>Encryption\NetEncryption.cs</Link>
     </Compile>
+    <Compile Include="..\LiteNetLib\Encryption\NetKeyExchange.cs">
+      <Link>Encryption\NetKeyExchange.cs</Link>
+    </Compile>
     <Compile Include="..\LiteNetLib\Encryption\NetXorEncryption.cs">
       <Link>Encryption\NetXorEncryption.cs</Link>
     </Compile>
