@@ -7,6 +7,9 @@ using LiteNetLib.Utils;
 
 namespace LibSample
 {
+    /// <summary>
+    /// 广播
+    /// </summary>
     class BroadcastTest
     {
         private class ClientListener : INetEventListener

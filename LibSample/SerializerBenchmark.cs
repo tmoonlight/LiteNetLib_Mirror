@@ -7,6 +7,9 @@ using System.Text;
 
 namespace LibSample
 {
+    /// <summary>
+    /// 序列化
+    /// </summary>
     class SerializerBenchmark
     {
         [Serializable] //Just for test binary formatter

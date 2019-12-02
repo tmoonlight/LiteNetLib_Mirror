@@ -29,6 +29,7 @@ namespace LibSample
                 peer.Send(writer, DeliveryMethod.ReliableOrdered);             // Send with reliability
             };
 
+            //轮询才能触发事件
             while (!Console.KeyAvailable)
             {
                 server.PollEvents();
@@ -50,6 +51,7 @@ namespace LibSample
                 dataReader.Recycle();
             };
 
+            //轮询才能触发事件
             while (!Console.KeyAvailable)
             {
                 client.PollEvents();

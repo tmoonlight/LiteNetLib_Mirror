@@ -77,6 +77,7 @@ namespace LiteNetLib
 
     /// <summary>
     /// Main class for all network operations. Can be used as client and/or server.
+    /// 核心类，可同时用于服务端可客户端
     /// </summary>
     public class NetManager : INetSocketListener, IConnectionRequestListener, IEnumerable<NetPeer>
     {

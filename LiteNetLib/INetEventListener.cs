@@ -111,6 +111,9 @@ namespace LiteNetLib
         void OnMessageDelivered(NetPeer peer, object userData);
     }
 
+    /// <summary>
+    /// 委托+代理模式的运用，一大堆的listener
+    /// </summary>
     public class EventBasedNetListener : INetEventListener, IDeliveryEventListener
     {
         public delegate void OnPeerConnected(NetPeer peer);
