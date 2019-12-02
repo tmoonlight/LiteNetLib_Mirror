@@ -933,7 +933,7 @@ namespace LiteNetLib
                 : DeliveryMethod.Unreliable;
             CreateEvent(NetEvent.EType.Receive, fromPeer, deliveryMethod: deliveryMethod, readerSource: packet);
         }
-
+        #region 群发
         /// <summary>
         /// Send data to all connected peers (channel - 0)
         /// </summary>
@@ -1079,6 +1079,8 @@ namespace LiteNetLib
                     netPeer.Send(data, start, length, channelNumber, options);
             }
         }
+
+        #endregion 群发
 
         /// <summary>
         /// Start logic thread and listening on available port

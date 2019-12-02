@@ -32,7 +32,7 @@
     }
 
     /// <summary>
-    /// Network constants. Can be tuned from sources for your purposes.
+    /// 常量，在实际情况可以调校这些常量.
     /// </summary>
     public static class NetConstants
     {

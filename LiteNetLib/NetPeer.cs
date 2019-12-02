@@ -81,7 +81,7 @@ namespace LiteNetLib
         private BaseChannel _headChannel;
 
         //MTU
-        private int _mtu = NetConstants.PossibleMtu[0];
+        private int _mtu = NetConstants.PossibleMtu[0];//默认572，最小mtu
         private int _mtuIdx;
         private bool _finishMtu;
         private int _mtuCheckTimer;
@@ -433,7 +433,7 @@ namespace LiteNetLib
         }
 
         /// <summary>
-        /// Send data to peer
+        /// 对 peer发送数据
         /// </summary>
         /// <param name="data">Data</param>
         /// <param name="start">Start of data</param>
@@ -488,7 +488,8 @@ namespace LiteNetLib
             int mtu = _mtu;
             if (length + headerSize > mtu)
             {
-                //if cannot be fragmented
+                //if cannot be fragmented 
+                //如果不能分片/如果无需确认并且包长度大于mtu的值，则报错
                 if (deliveryMethod != DeliveryMethod.ReliableOrdered && deliveryMethod != DeliveryMethod.ReliableUnordered)
                     throw new TooBigPacketException("Unreliable packet size exceeded maximum of " + (_mtu - headerSize) + " bytes");
 

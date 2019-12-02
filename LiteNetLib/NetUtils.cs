@@ -18,7 +18,7 @@ namespace LiteNetLib
     }
 
     /// <summary>
-    /// Some specific network utilities
+    /// 网络公用类
     /// </summary>
     public static class NetUtils
     {
@@ -84,7 +84,7 @@ namespace LiteNetLib
         }
 
         /// <summary>
-        /// Get all local ip addresses (non alloc version)
+        ///获取所有的本地ip (non alloc version)
         /// </summary>
         /// <param name="targetList">result list</param>
         /// <param name="addrType">type of address (IPv4, IPv6 or both)</param>
@@ -160,7 +160,7 @@ namespace LiteNetLib
         // ===========================================
         // Internal and debug log related stuff
         // ===========================================
-        internal static void PrintInterfaceInfos()
+        public static void PrintInterfaceInfos()
         {
             NetDebug.WriteForce(NetLogLevel.Info, "IPv6Support: {0}", NetSocket.IPv6Support);
             try

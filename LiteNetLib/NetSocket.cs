@@ -52,7 +52,7 @@ namespace LiteNetLib
             IPv6Support = Socket.SupportsIPv6;
 #pragma warning restore 618
 #else
-            IPv6Support = Socket.OSSupportsIPv6;
+            IPv6Support = Socket.OSSupportsIPv6; //判断是否支持ipv6
 #endif
         }
 
@@ -61,6 +61,10 @@ namespace LiteNetLib
             _listener = listener;
         }
 
+        /// <summary>
+        /// receive主要逻辑
+        /// </summary>
+        /// <param name="state"></param>
         private void ReceiveLogic(object state)
         {
             Socket socket = (Socket)state;
@@ -164,6 +168,11 @@ namespace LiteNetLib
             socket.SendBufferSize = NetConstants.SocketBufferSize;
             try
             {
+                //知识点1 在UDP通信过程中，如果客户端中途断开，服务器会收到一个SocketException，错
+                //误ID为10054，描述是“远程主机强迫关闭了一个现有的连接”，紧接着的事就可怕了，UDP
+                //服务终止监听，所有客户端都受到了影响。也就是说一个客户端引起的异常导致了整个系统的崩溃。
+                //UDP是无连接的，可是当实际现场使用时，如果远程主机异常关闭，服务器则会抛出一个异常：远程主机强行关闭了一个连接
+                //而一但这个异常抛出后，又没有及时处理，那么整个UDP服务都将崩溃而不能接收任何数据
                 socket.IOControl(SioUdpConnreset, new byte[] {0}, null);
             }
             catch

@@ -36,6 +36,7 @@ namespace LiteNetLib
         internal readonly byte ConnectionNumber;
         internal readonly NetPeer Peer;
 
+        //类似悲观锁定？？
         private bool TryActivate()
         {
             return Interlocked.CompareExchange(ref _used, 1, 0) == 0;
