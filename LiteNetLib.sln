@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSample", "LibSample\LibSample.csproj", "{EF232CBE-04C8-4FD9-AE26-2F7EBBE81699}"
 EndProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleLockStep", "SampleLockStep\SampleLockStep.csproj", "{016643B0-1576-437C-BCCE-EBADFF5A736D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +76,22 @@ Global
 		{2F98F12C-B72A-48FE-A7E5-6D8B0C5ABACB}.Release|x64.Build.0 = Release|Any CPU
 		{2F98F12C-B72A-48FE-A7E5-6D8B0C5ABACB}.Release|x86.ActiveCfg = Release|Any CPU
 		{2F98F12C-B72A-48FE-A7E5-6D8B0C5ABACB}.Release|x86.Build.0 = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|ARM.Build.0 = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|x64.Build.0 = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Debug|x86.Build.0 = Debug|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|ARM.Build.0 = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|x64.ActiveCfg = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|x64.Build.0 = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|x86.ActiveCfg = Release|Any CPU
+		{016643B0-1576-437C-BCCE-EBADFF5A736D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

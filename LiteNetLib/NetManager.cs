@@ -76,7 +76,6 @@ namespace LiteNetLib
     }
 
     /// <summary>
-    /// Main class for all network operations. Can be used as client and/or server.
     /// 核心类，可同时用于服务端可客户端
     /// </summary>
     public class NetManager : INetSocketListener, IConnectionRequestListener, IEnumerable<NetPeer>
@@ -267,6 +266,7 @@ namespace LiteNetLib
         public int LocalPort { get { return _socket.LocalPort; } }
 
         /// <summary>
+        /// 当接收了数据之后，自动回收
         /// Automatically recycle NetPacketReader after OnReceive event
         /// </summary>
         public bool AutoRecycle;
@@ -1201,6 +1201,7 @@ namespace LiteNetLib
 
         /// <summary>
         /// Receive all pending events. Call this in game update code
+        /// 循环处理队列中的事件,处理完了就跳出
         /// </summary>
         public void PollEvents()
         {
