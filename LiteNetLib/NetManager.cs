@@ -195,6 +195,7 @@ namespace LiteNetLib
         public bool SimulatePacketLoss = false;
 
         /// <summary>
+        /// 模拟延迟
         /// Simulate latency by holding packets for random time. (Works only in DEBUG mode)
         /// </summary>
         public bool SimulateLatency = false;
@@ -210,6 +211,7 @@ namespace LiteNetLib
         public int SimulationMinLatency = 30;
 
         /// <summary>
+        /// 延迟模拟，测试差网络的工具
         /// Maximum simulated latency
         /// </summary>
         public int SimulationMaxLatency = 100;

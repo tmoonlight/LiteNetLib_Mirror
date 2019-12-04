@@ -7,6 +7,7 @@ namespace LibSample
 {
     class GithubSample
     {
+        Random rand = new Random(996);
         public void Server()
         {
             EventBasedNetListener listener = new EventBasedNetListener();
