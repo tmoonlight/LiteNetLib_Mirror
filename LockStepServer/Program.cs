@@ -33,25 +33,28 @@ namespace LockStepServer
                 peer.Send(writer, DeliveryMethod.ReliableOrdered);             // Send with reliability
             };
             listener.NetworkReceiveEvent += Listener_NetworkReceiveEvent;
-
+            int i = 0;
             while (true)
             {
-                server.PollEvents();
+                server.PollEvents(); //不会阻塞
                 const int alTime = 1000;
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
+                Console.Write(i);
+                Console.Write(":");
                 Console.WriteLine(rand.Next());
                 Console.Write("----");
                 sw.Stop();
                 Thread.Sleep(Math.Clamp(alTime - (int)sw.ElapsedMilliseconds, 0, alTime));
+                i++;
             }
 
-            //轮询才能触发事件
-            while (!Console.KeyAvailable)
-            {
-                server.PollEvents();
-                Thread.Sleep(15);
-            }
+            ////轮询才能触发事件
+            //while (!Console.KeyAvailable)
+            //{
+            //    server.PollEvents();
+            //    Thread.Sleep(15);
+            //}
 
             server.Stop();
         }

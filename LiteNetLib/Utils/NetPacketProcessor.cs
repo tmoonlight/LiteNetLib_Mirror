@@ -225,6 +225,8 @@ namespace LiteNetLib.Utils
         }
 
         /// <summary>
+        /// 注册某个数据包到来的事件
+        /// 该方法会重写之前的事件
         /// Register and subscribe to packet receive event
         /// This metod will overwrite last received packet class on receive (less garbage)
         /// </summary>
