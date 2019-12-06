@@ -11,12 +11,23 @@ namespace LockStepClient
     //队列
 
     //单个操作
-    public class SyncData
+    public class SyncData:INetSerializable
     {
         short angleXLeft = 180;
         short angleXRight = 180;
         byte ski = 0b00001111;
         private int size = 2 + 2 + 1;
+
+
+        public void Serialize(NetDataWriter writer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deserialize(NetDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class Program

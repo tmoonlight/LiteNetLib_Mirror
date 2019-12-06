@@ -105,6 +105,7 @@ namespace LiteNetLib
 
         public void Realloc(int toSize, bool clear)
         {
+            //释放资源，只是clear和置0
             Size = (ushort)toSize;
             if (RawData.Length < toSize)
             {

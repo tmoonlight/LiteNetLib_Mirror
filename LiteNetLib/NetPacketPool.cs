@@ -6,7 +6,7 @@ namespace LiteNetLib
     internal sealed class NetPacketPool
     {
         private readonly NetPacket[] _pool = new NetPacket[NetConstants.PacketPoolSize];
-        private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+        
         private int _count;
 
         public NetPacket GetWithData(PacketProperty property, byte[] data, int start, int length)
@@ -16,6 +16,8 @@ namespace LiteNetLib
             return packet;
         }
 
+        private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+        //这种精度的锁技术 有待研究
         public NetPacket GetPacket(int size, bool clear)
         {
             NetPacket packet = null;
