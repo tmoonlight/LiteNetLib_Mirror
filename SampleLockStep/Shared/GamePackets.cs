@@ -117,6 +117,7 @@ namespace Code.Shared
         }
     }
     
+    //实际上是状态同步 保存了位置和rotation
     public struct PlayerState : INetSerializable
     {
         public byte Id;

@@ -61,6 +61,7 @@ namespace LiteNetLib.Utils
         }
 
         /// <summary>
+        /// 注册包含在数据包里的新类型
         /// Register nested property type
         /// </summary>
         /// <typeparam name="T">INetSerializable structure</typeparam>

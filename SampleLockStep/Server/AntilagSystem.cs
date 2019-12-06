@@ -10,8 +10,8 @@ namespace Code.Server
 
     public class AntilagSystem
     {
-        private readonly Dictionary<int, StateInfo>[] _storedPositions;
-        private readonly Dictionary<int, StateInfo> _savedStates;
+        private readonly Dictionary<int, StateInfo>[] _storedPositions;  //¥Ê¥¢Œª÷√
+        private readonly Dictionary<int, StateInfo> _savedStates; //Œª÷√
         private int _currentArrayPos;
         private ushort _lastTick;
         private readonly int _maxTicks;
