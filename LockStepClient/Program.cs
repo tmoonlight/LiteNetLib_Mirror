@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using LiteNetLib;
@@ -14,7 +15,8 @@ namespace LockStepClient
     {
         short angleXLeft = 180;
         short angleXRight = 180;
-        private byte ski = 0b00001111;
+        byte ski = 0b00001111;
+        private int size = 2 + 2 + 1;
     }
 
     class Program
